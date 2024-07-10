@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './App.css';
 import tituloImg from './img/titulo.png'; // Importa la imagen de tu título
+import footerImg from './img/pokedex.png'; // Importa la imagen de tu footer
 
 function App() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -29,25 +30,56 @@ function App() {
     fetchPokemonData();
   }, []);
 
+  const getTypeColor = (type) => {
+    switch (type) {
+      case 'grass':
+        return '#4CAF50'; // Verde
+      case 'poison':
+        return '#9C27B0'; // Morado
+      case 'normal':
+        return '#9E9E9E'; // Plomo
+      case 'flying':
+        return '#03A9F4'; // Celeste
+      default:
+        return '#9E9E9E'; // Plomo por defecto
+    }
+  };
+
   return (
-    <div className="App">
-      <div className="app-header">
+    <div className='Principal'>
+      <div className="titulo">
         <img src={tituloImg} alt="Título" className="titulo-img" />
       </div>
-      <div className="pokemon-grid">
-        {pokemonList.map((pokemon, index) => (
-          <div key={index} className="pokemon-card">
-            <img src={pokemon.sprites.front_default} alt={pokemon.name} />
-            <div className="pokemon-info">
-              <h3>{pokemon.name}</h3>
-              <p>
-                <strong>Height:</strong> {pokemon.height} | <strong>Weight:</strong> {pokemon.weight}
-              </p>
-              <a href={pokemon.species.url}>More Info</a>
+      <div className="App">
+        <div className="pokemon-grid">
+          {pokemonList.map((pokemon, index) => (
+            <div key={index} className="pokemon-card">
+              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+              <div className="pokemon-info">
+                <h3>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h3>
+                <p>
+                  <strong>Height:</strong> {pokemon.height} | <strong>Weight:</strong> {pokemon.weight}
+                </p>
+                <div className="pokemon-types">
+                  {pokemon.types.map((type, idx) => (
+                    <button
+                      key={idx}
+                      style={{ backgroundColor: getTypeColor(type.type.name), color: '#fff', padding: '5px 10px', margin: '5px', borderRadius: '5px', border: 'none' }}
+                    >
+                      {type.type.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
+      <footer className="footer">
+        <a href="https://www.pokemon.com/el/pokedex" target="_blank" rel="noopener noreferrer">
+          <img src={footerImg} alt="Footer" className="footer-img" />
+        </a>
+      </footer>
     </div>
   );
 }

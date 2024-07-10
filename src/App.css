@@ -1,20 +1,5 @@
-/* Estilos globales */
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  background-image: url('./img/descarga.gif'); /* Ruta a tu GIF de fondo */
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Ajusta la altura a la altura total de la ventana */
-  overflow-y: auto;
-  padding: 30px;
-}
-
 /* Estilos para el contenedor principal */
+
 .App {
   display: flex;
   justify-content: center;
@@ -22,16 +7,16 @@ body {
   flex-wrap: wrap; /* Envuelve los elementos en múltiples líneas si es necesario */
   max-width: 100%; /* Ancho máximo ajustado al 100% */
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0); /* Color de fondo del contenedor principal */
+  background-color: rgba(0, 0, 0, 0.068); /* Color de fondo del contenedor principal */
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.87);
 }
 
-/* Estilos para el grid de Pokémon */
 .pokemon-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Tres columnas iguales */
-  gap: 20px; /* Espacio entre los Pokémon */
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 800px; /* Ancho máximo para el grid de Pokémon */
 }
 
 /* Estilos para cada tarjeta de Pokémon */
@@ -68,29 +53,76 @@ p {
   color: #000000;
 }
 
-a {
-  text-decoration: none;
-  color: #007bff;
-}
-
-a:hover {
-  text-decoration: underline;
-}
-/* Estilos para el encabezado de la aplicación */
-.app-header {
+/* Estilos para los botones de tipos de Pokémon */
+.pokemon-types {
   display: flex;
-  align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  flex-wrap: wrap;
+  margin-top: 10px;
 }
 
-.app-logo {
-  width: 80px; /* Ajusta el tamaño de la imagen según sea necesario */
-  height: auto;
-  margin-right: 10px; /* Espacio entre el logo y el título */
+.pokemon-types button {
+  margin: 5px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
 }
 
-.app-header h1 {
-  font-size: 24px; /* Tamaño del título */
+/* Estilos globales */
+body {
+  font-family: Arial, sans-serif;
   margin: 0;
+  background-image: url('./img/descarga.gif'); /* Ruta a tu GIF de fondo */
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Ajusta la altura a la altura total de la ventana */
+  overflow-y: auto;
+  padding: 30px;
+}
+
+.titulo {
+  margin-top: -110px; /* Ajusta este valor según necesites */
+  margin-bottom: 50px;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 20px;
+  padding: 10px;
+}
+
+.footer-img {
+  width: 100px; /* Ajusta el tamaño del footer según sea necesario */
+  cursor: pointer;
+}
+
+
+@media (max-width: 1024px) {
+  .pokemon-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+
+@media (max-width: 1980px){
+  .titulo{
+    margin-top: -10px;
+  }
+}
+
+@media (max-width: 1024px){
+  .titulo{
+    margin-top: -270px;
+  }
+}
+
+@media (max-width: 1024px){
+  body{
+    height: 150vh
+  }
 }
