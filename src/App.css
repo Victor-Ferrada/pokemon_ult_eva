@@ -85,10 +85,7 @@ body {
   padding: 30px;
 }
 
-.titulo {
-  margin-top: -50px; /* Ajusta este valor según necesites */
-  margin-bottom: 50px;
-}
+
 
 .footer {
   text-align: center;
@@ -135,18 +132,18 @@ body {
 
 @media (max-width: 1980px){
   .titulo{
-    margin-top: 10px;
+    margin-top: 40px;
   }
 }
 
 @media (max-width: 1024px){
   .titulo{
-    margin-top: -220px;
+    margin-top: 50px;
   }
 }
 
 @media (max-width: 1024px){
   body{
-    height: 150vh
+    height: 150%
   }
 }
