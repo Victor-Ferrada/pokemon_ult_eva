@@ -45,6 +45,10 @@ function App() {
     }
   };
 
+  const getPokedexUrl = (pokemonName) => {
+    return `https://www.pokemon.com/el/pokedex/${pokemonName}`;
+  };
+
   return (
     <div className='Principal'>
       <div className="titulo">
@@ -54,7 +58,9 @@ function App() {
         <div className="pokemon-grid">
           {pokemonList.map((pokemon, index) => (
             <div key={index} className="pokemon-card">
-              <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+              <a href={getPokedexUrl(pokemon.name)} target="_blank" rel="noopener noreferrer">
+                <img src={pokemon.sprites.front_default} alt={pokemon.name} />
+              </a>
               <div className="pokemon-info">
                 <h3>{pokemon.name.charAt(0).toUpperCase() + pokemon.name.slice(1)}</h3>
                 <p>
