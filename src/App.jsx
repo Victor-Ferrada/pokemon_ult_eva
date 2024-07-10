@@ -3,9 +3,12 @@ import axios from 'axios';
 import './App.css';
 import tituloImg from './img/titulo.png'; // Importa la imagen de tu título
 import footerImg from './img/pokedex.png'; // Importa la imagen de tu footer
+import myAudio from './assets/myaudio.mp3'; // Importa el archivo MP3
 
 function App() {
   const [pokemonList, setPokemonList] = useState([]);
+  const [audio] = useState(new Audio(myAudio)); // Inicializa el estado con el audio
+  const [isPlaying, setIsPlaying] = useState(false); // Estado para controlar si el audio está reproduciéndose o no
 
   useEffect(() => {
     const fetchPokemonData = async () => {
@@ -49,6 +52,15 @@ function App() {
     return `https://www.pokemon.com/el/pokedex/${pokemonName}`;
   };
 
+  const toggleAudio = () => {
+    if (isPlaying) {
+      audio.pause(); // Pausa el audio si está reproduciéndose
+    } else {
+      audio.play(); // Reproduce el audio si no está reproduciéndose
+    }
+    setIsPlaying(!isPlaying); // Cambia el estado de isPlaying
+  };
+
   return (
     <div className='Principal'>
       <div className="titulo">
@@ -86,6 +98,11 @@ function App() {
           <img src={footerImg} alt="Footer" className="footer-img" />
         </a>
       </footer>
+      <div className="audio-controls">
+          <button className="control-button" onClick={toggleAudio}>
+            {isPlaying ? 'Pausar Música' : 'Reproducir Música'}
+          </button>
+      </div>
     </div>
   );
 }
